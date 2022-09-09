@@ -1,2 +1,1 @@
-# Telp
-Road To Hire Project
+React Template
