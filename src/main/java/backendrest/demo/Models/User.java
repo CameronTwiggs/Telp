@@ -3,6 +3,7 @@ package backendrest.demo.Models;
 import javax.persistence.*;
 
 
+
 @Entity
 public class User {
     @Id

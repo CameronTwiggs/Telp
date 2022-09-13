@@ -35,11 +35,11 @@ public class ApiControllers {
 //    }
 
     @PostMapping(value= "/save")
-    public String saveUser(@RequestBody User user) {
+    public User saveUser(@RequestBody User user) {
         String uniqueID = UUID.randomUUID().toString();
         user.setUniqueID(uniqueID);
         userRepo.save(user);
-        return "bru";
+        return user;
     }
 
     @PutMapping(value = "update/{id}")
