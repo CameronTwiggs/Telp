@@ -1,10 +1,11 @@
 
-export default function FriendCard(data) {
+
+export default function FriendCard(friend) {
     return (
-        <div className="card">
-            <p>{data.first_name}</p>
-            <p>{data.last_name}</p>
-            <p>{data.bio}</p>
-        </div>
+        <li className="card">
+            <p>{friend.data.first_name}</p>
+            <p>{friend.data.last_name}</p>
+            <p>{friend.data.bio}</p>
+        </li>
     )
 }
