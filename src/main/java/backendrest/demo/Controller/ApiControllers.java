@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @RestController
@@ -35,8 +36,10 @@ public class ApiControllers {
 
     @PostMapping(value= "/save")
     public String saveUser(@RequestBody User user) {
+        String uniqueID = UUID.randomUUID().toString();
+        user.setUniqueID(uniqueID);
         userRepo.save(user);
-        return "...Saved :D";
+        return "bru";
     }
 
     @PutMapping(value = "update/{id}")
@@ -54,8 +57,8 @@ public class ApiControllers {
     public String deleteUser (@PathVariable long id) {
         User deleteUser = userRepo.findById(id).get();
         userRepo.delete(deleteUser);
-        System.out.println("Deleted user with id of" + id);
-        return  "Deleted user with id of" + id;
+        System.out.println("Deleted user with id of " + id);
+        return  "Deleted user with id of " + id;
 
     }
 }

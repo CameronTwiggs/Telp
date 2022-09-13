@@ -2,6 +2,7 @@ package backendrest.demo.Models;
 
 import javax.persistence.*;
 
+
 @Entity
 public class User {
     @Id
@@ -13,6 +14,8 @@ public class User {
     private String last_name;
     @Column
     private String bio;
+    @Column
+    private String uniqueID;
 // Getters
     public long getId() {
         return id;
@@ -29,6 +32,8 @@ public class User {
     public String getBio() {
         return bio;
     }
+    public String getUniqueID(){return uniqueID;}
+
 // Setters
     public void setFirst_name(String first_name) {
         this.first_name = first_name;
@@ -41,5 +46,7 @@ public class User {
     public void setBio(String bio) {
         this.bio = bio;
     }
-
+    public void setUniqueID(String uniqueID) {
+        this.uniqueID = uniqueID;
+    }
 }
