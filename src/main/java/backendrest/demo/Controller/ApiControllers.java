@@ -24,6 +24,7 @@ public class ApiControllers {
 
     @GetMapping(value = "/users")
     public List<User> getUsers() {
+        System.out.println("Users Sent");
         return userRepo.findAll();
     }
 
