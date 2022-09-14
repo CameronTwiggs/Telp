@@ -91,7 +91,7 @@ export default function App() {
         Add Clone
       </button>
       {/* Maps API */}
-      <p>{}</p>
+      <p>{process.env.REACT_APP_BACKEND_URL}</p>
     </>
   );
 }
