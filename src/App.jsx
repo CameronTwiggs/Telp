@@ -3,18 +3,26 @@ import FriendCard from "./Components/FriendCard";
 
 export default function App() {
   const [friends, setFriends] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   // const [search, setSearch] = useState('');
 
   useEffect(() => {
-    fetch("https://telp-backend.herokuapp.com/users")
+    fetch(`${process.env.REACT_APP_BACKEND_URL}users`)
       .then((res) => res.json())
       .then((data) => {
+        setLoading(false);
         setFriends(data);
+      })
+      .catch((err) => {
+        setLoading(false);
+        setError(err);
+        console.log(err);
       });
   }, []);
   // when a button is clicked, it deltets the friend from the list
   const deleteFriend = (id) => {
-    fetch(`https://telp-backend.herokuapp.com/delete/${id}`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}delete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -27,7 +35,7 @@ export default function App() {
   };
   // when a button is clicked, it adds a friend to the list
   const addFriend = (friend) => {
-    fetch("https://telp-backend.herokuapp.com/save", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}save`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,9 +49,10 @@ export default function App() {
       }
       );
   };
+
   // when a button is clicked, it updates the friend in the list
   // const updateFriend = (friend) => {
-  //   fetch(`https://telp-backend.herokuapp.com/users/${friend.id}`, {
+  //   fetch(`${process.env.REACT_APP_BACKEND_URL}users/${friend.id}`, {
   //     method: "PUT",
   //     headers: {
   //       "Content-Type": "application/json",
@@ -61,6 +70,9 @@ export default function App() {
   return (
     <>
       <ul>
+        <p>Friends</p>
+        {loading ? <h1>Loading...</h1> : null}
+        {error ? <h1>Error</h1> : null}
         {friends.map((friend) => (
           <>
             <FriendCard key={friend.id} data={friend} />
@@ -78,6 +90,8 @@ export default function App() {
         {" "}
         Add Clone
       </button>
+      {/* Maps API */}
+      <p>{}</p>
     </>
   );
 }
