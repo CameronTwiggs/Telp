@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Maps from "./Components/Maps";
-import "./styles.css";
+import "./styles/styles.css"
 import Friends from "./pages/Friends";
 import Places from "./pages/Places";
 
